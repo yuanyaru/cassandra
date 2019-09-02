@@ -48,9 +48,9 @@ $ tar zxvf apache-cassandra-3.11.3-bin.tar.gz
 ![image](https://github.com/yuanyaru/cassandra/blob/master/images/check.png)
 
 #### 操作cassandra数据库，bin目录下
-./cqlsh 进入数据库
-退出 cqlsh 直接 Ctrl+d
-终止 pkill -u `id -un` -f cassandra
+* ./cqlsh 进入数据库
+* 退出 cqlsh 直接 Ctrl+d
+* 终止 pkill -u `id -un` -f cassandra
 
 ### 注意
 配置Cassandra，打开并编辑Cassandra.yaml文件，修改start_rpc: false -》 start_rpc: true
