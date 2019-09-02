@@ -3,6 +3,7 @@ Cassandra 是运行于 java 环境之上，所以 JRE 是必须要安装的
 参考：install java and run a java code in linux
 
 如果没有安装jre, 启动 cassandra 会报错：
+
 ![image](https://github.com/yuanyaru/cassandra/blob/master/images/jre.jpg)
 
 #### 下载 Cassandra
