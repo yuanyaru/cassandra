@@ -3,7 +3,7 @@
 1. 下载 http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
  jdk-8u191-linux-x64.tar.gz
 
-2. 采用WinSCP将jdk压缩包复制到linux:/user/local/bin
+2. 采用 WinSCP 将 jdk 压缩包复制到 linux:/user/local/bin
 
 3. tar zxvf jdk-8u191-linux-x64.tar.gz
 
@@ -15,10 +15,10 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 5. source /etc/profile
 
-6. 查看jdk版本 
+6. 查看 jdk 版本
 java -version
 
-二. 编译运行一个java程序
+二. 编译运行一个 java 程序
 
 1. 用文本编辑器新建一个Test.java文件，在其中输入以下代码并保存：
 [root@nodeb4 yyr]# vi Test.java 
@@ -30,11 +30,10 @@ public class Test {
     }
 }　　
 
-2. 编译：在shell终端执行命令 
+2. 编译：在 shell 终端执行命令
 javac Test.java
 
-3. 运行：在shell终端执行命令?
+3. 运行：在 shell 终端执行命令?
 java Test
 　　　
-当shell下出现“A new jdk test !”字样则jdk运行正常。
-
+当shell下出现“A new jdk test !”字样则 jdk 运行正常。
