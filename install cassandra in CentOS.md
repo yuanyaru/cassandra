@@ -53,5 +53,8 @@ $ tar zxvf apache-cassandra-3.11.3-bin.tar.gz
 * 终止 pkill -u `id -un` -f cassandra
 
 ### 注意
-配置Cassandra，打开并编辑Cassandra.yaml文件，修改start_rpc: false -》 start_rpc: true
+1. 配置Cassandra，打开并编辑Cassandra.yaml文件，修改start_rpc: false -》 start_rpc: true
 这样别的应用才能连到它。
+2. 别的机器连接需要这样设置
+rpc_address: 0.0.0.0
+broadcast_rpc_address: 192.168.100.64
