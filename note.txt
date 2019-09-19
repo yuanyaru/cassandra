@@ -1,0 +1,6 @@
+1. question:
+OperationTimedOut: errors={'127.0.0.1': 'Client request timeout. See Session.execute[_async](timeout)'}, last_host=127.0.0.1
+solution:
+vim cqlshrc.sample
+[connection]
+request_timeout = 6000
