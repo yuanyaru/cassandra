@@ -1,6 +1,6 @@
 #### 安装 java
-Cassandra 是运行于 java 环境之上，所以 JRE 是必须要安装的
-参考：install java and run a java code in linux
+Cassandra 是运行于 java 环境之上，所以 JRE 是必须要安装的，安装步骤见：
+[https://github.com/yuanyaru/cassandra/blob/master/install%20java%20and%20run%20a%20java%20code%20in%20linux.txt](https://github.com/yuanyaru/cassandra/blob/master/install%20java%20and%20run%20a%20java%20code%20in%20linux.txt)
 
 如果没有安装jre, 启动 cassandra 会报错：
 
@@ -50,13 +50,29 @@ $ tar zxvf apache-cassandra-3.11.3-bin.tar.gz
 #### 操作cassandra数据库，bin目录下
 * ./cqlsh 进入数据库
 * 退出 cqlsh 直接 Ctrl+d
-* 终止 pkill -u `id -un` -f cassandra
+* 终止 
 
-### 注意
-1. 配置Cassandra，打开并编辑Cassandra.yaml文件，修改start_rpc: false -》 start_rpc: true
-这样别的应用才能连到它。
-2. 别的机器连接需要这样设置
+#### 集群环境搭建
+两个节点：
+节点1：192.168.100.64（seed）
+节点2：192.168.100.63
+1. 配置节点1
+* 配置Cassandra，打开并编辑Cassandra.yaml文件
 ``` bash
-rpc_address: 0.0.0.0
-broadcast_rpc_address: 192.168.100.64
+seed_provider:
+    - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+      parameters:
+          - seeds: "192.168.100.64"  # 改为你的对外访问的ip
+listen_address: 192.168.100.64  # 改为你的对外访问的ip
+start_rpc: true  # 这样别的应用才能连到它
+rpc_address: 0.0.0.0  # 局域网内别的机器连接
+broadcast_rpc_address: 192.168.100.64  # 改为你的对外访问的ip
 ```
+* 启动节点1
+2. 配置节点2
+* 与节点1非常类似，要改动配置里面的seeds那一项的ip为节点1的ip
+* 启动节点2
+
+![image](https://github.com/yuanyaru/cassandra/blob/master/images/2start.png)
+
+![image](https://github.com/yuanyaru/cassandra/blob/master/images/2check.png)
