@@ -18,6 +18,9 @@ $ tar zxvf apache-cassandra-3.11.3-bin.tar.gz
 ``` bash
 /usr/local/bin/apache-cassandra-3.11.3/bin
 ./cassandra -f -R
+参数：
+-f: 在前台启动
+-R: 允许root用户启动
 ```
 
 * 启动直接 killed
