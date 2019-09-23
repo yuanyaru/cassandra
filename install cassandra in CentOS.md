@@ -53,12 +53,14 @@ $ tar zxvf apache-cassandra-3.11.3-bin.tar.gz
 #### 操作cassandra数据库，bin目录下
 * ./cqlsh 进入数据库
 * 退出 cqlsh 直接 Ctrl+d
-* 终止 
+* 终止 pkill -u `id -un` -f cassandra
 
 #### 集群环境搭建
 两个节点：
-节点1：192.168.100.64（seed）
-节点2：192.168.100.63
+
+* 节点1：192.168.100.64（seed）
+* 节点2：192.168.100.63
+
 1. 配置节点1
 * 配置Cassandra，打开并编辑Cassandra.yaml文件
 ``` bash
