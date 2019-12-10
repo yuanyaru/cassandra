@@ -1,0 +1,34 @@
+一、 构建cassandra集群
+1. 第一种方式：
+（1）拉取cassandra的官方镜像
+docker pull cassandra
+（2）启用一个node
+docker run -d --name cassandra -p 9042:9042 cassandra
+（3）添加第二个node
+docker run --name cassandra2 -d -e CASSANDRA_SEEDS="$(docker inspect --format='{{ .NetworkSettings.IPAddress }}' cassandra)" cassandra
+（4）进入某一个node
+docker exec -it cassandra bash
+可以看到集群建立
+root@07dd9d01a3d5:/# nodetool status
+Datacenter: datacenter1
+=======================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address      Load       Tokens       Owns (effective)  Host ID                               Rack
+UN  172.30.40.2  108.67 KiB  256          100.0%            8385e842-4713-447d-88a7-b77a19fd4873  rack1
+UN  172.30.40.3  15.35 KiB  256          100.0%            6d576c3f-379b-4bd2-808e-8ef001cbe563  rack1
+（5）python调用
+py-cassandra.py
+
+2. 第二种方式：一键创建 Cassandra 集群
+下面创建一个包含3个节点的 Cassandra 集群，其中第一个容器“cassandra-1”为seed节点。
+（1）docker-compose.yml
+（2）利用 docker-compose 命令启动 Cassandra 集群
+    docker-compose up -d
+（3）启动之后，查看集群状态
+[root@kube-node3 yyr]# docker-compose ps
+   Name                  Command               State                                Ports
+----------------------------------------------------------------------------------------------------------------------
+cassandra-1   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32777->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
+cassandra-2   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32778->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
+cassandra-3   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32779->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
