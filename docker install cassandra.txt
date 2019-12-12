@@ -23,6 +23,7 @@ py-cassandra.py
 2. 第二种方式：一键创建 Cassandra 集群
 下面创建一个包含3个节点的 Cassandra 集群，其中第一个容器“cassandra-1”为seed节点。
 （1）docker-compose.yml
+（2）yum install -y docker-compose
 （2）利用 docker-compose 命令启动 Cassandra 集群
     docker-compose up -d
 （3）启动之后，查看集群状态
@@ -32,3 +33,7 @@ py-cassandra.py
 cassandra-1   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32777->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
 cassandra-2   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32778->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
 cassandra-3   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32779->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
+[root@nodeb2 yyr]# docker exec -ti cassandra-1 cqlsh cassandra-2 -e "DESCRIBE CLUSTER"
+
+Cluster: Test Cluster
+Partitioner: Murmur3Partitioner

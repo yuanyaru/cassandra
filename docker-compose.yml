@@ -8,6 +8,7 @@ services:
     ports:
       - 7000
     restart: always
+
   cassandra-2:
     image: cassandra:3
     container_name: cassandra-2
@@ -19,6 +20,7 @@ services:
     depends_on:
       - cassandra-1
     restart: always
+
   cassandra-3:
     image: cassandra:3
     container_name: cassandra-3

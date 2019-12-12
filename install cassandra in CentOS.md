@@ -1,10 +1,11 @@
 #### 安装 java
 Cassandra 是运行于 java 环境之上，所以 JRE 是必须要安装的，安装步骤见：
+
 [https://github.com/yuanyaru/cassandra/blob/master/install%20java%20and%20run%20a%20java%20code%20in%20linux.txt](https://github.com/yuanyaru/cassandra/blob/master/install%20java%20and%20run%20a%20java%20code%20in%20linux.txt)
 
 如果没有安装jre, 启动 cassandra 会报错：
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/jre.jpg)
+![Image text](images/jre.jpg)
 
 #### 下载 Cassandra
 将/packages/apache-cassandra-3.11.3-bin.tar.gz 拷贝至/usr/local/bin/ 目录下
@@ -18,37 +19,38 @@ $ tar zxvf apache-cassandra-3.11.3-bin.tar.gz
 ``` bash
 /usr/local/bin/apache-cassandra-3.11.3/bin
 ./cassandra -f -R
-参数：
+参数 ：
 -f: 在前台启动
 -R: 允许root用户启动
 ```
 
 * 启动直接 killed
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/killed.jpg)
+![Image text](images/killed.jpg)
 
 原因：内存太小
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/memory-small.jpg)
+![Image text](images/memory-small.jpg)
 
 * 扩大内存后，启动成功
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/memory-big.jpg)
+![Image text](images/memory-big.jpg)
 
 * 启动时无法加载某个类:
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/cannot-load-class.png)
+![Image text](images/cannot-load-class.png)
 
 原因：环境变量版本和实际版本不一致
+
 解决：改了环境变量，还是报这个错，关机重启就可以了
 
 如果没有报什么奇奇怪怪的 ERROR 然后看到 Node /x.x.x.x state jump to NORMAL，这样cassandra就算安装完成了
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/start-success.png)
+![Image text](images/start-success.png)
 
 也可以在在bin目录下使用 ./nodetool status 查看集群信息确认一下
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/check.png)
+![Image text](images/check.png)
 
 #### 操作cassandra数据库，bin目录下
 * ./cqlsh 进入数据库
@@ -78,6 +80,6 @@ broadcast_rpc_address: 192.168.100.64  # 改为你的对外访问的ip
 * 与节点1非常类似，要改动配置里面的seeds那一项的ip为节点1的ip
 * 启动节点2
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/2start.png)
+![Image text](images/2start.png)
 
-![image](https://github.com/yuanyaru/cassandra/blob/master/images/2check.png)
+![Image text](images/2check.png)
