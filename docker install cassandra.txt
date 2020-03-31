@@ -33,7 +33,19 @@ py-cassandra.py
 cassandra-1   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32777->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
 cassandra-2   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32778->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
 cassandra-3   docker-entrypoint.sh cassa ...   Up      0.0.0.0:32779->7000/tcp, 7001/tcp, 7199/tcp, 9042/tcp, 9160/tcp
+
 [root@nodeb2 yyr]# docker exec -ti cassandra-1 cqlsh cassandra-2 -e "DESCRIBE CLUSTER"
 
 Cluster: Test Cluster
 Partitioner: Murmur3Partitioner
+
+[root@nodeb2 yyr]# docker exec -it cassandra-1 bash
+root@2d51ec4a59e3:/# nodetool status
+Datacenter: datacenter1
+=======================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address     Load       Tokens       Owns (effective)  Host ID                               Rack
+UN  172.18.0.2  108.62 KiB  256          65.1%             3d14b7e7-91f6-411b-a11a-3db5ed73cfb8  rack1
+UN  172.18.0.3  105.22 KiB  256          71.3%             cdd9337d-cc86-4805-8745-df6484f851c7  rack1
+UN  172.18.0.4  105.18 KiB  256          63.6%             9f001247-7056-473e-9839-d9bb9f82e400  rack1
