@@ -6,7 +6,7 @@ services:
     environment:
       - CASSANDRA_BROADCAST_ADDRESS=cassandra-1
     ports:
-      - 7000
+      - 9042:9042
     restart: always
 
   cassandra-2:
@@ -16,7 +16,7 @@ services:
       - CASSANDRA_BROADCAST_ADDRESS=cassandra-2
       - CASSANDRA_SEEDS=cassandra-1
     ports:
-      - 7000
+      - 9142:9042
     depends_on:
       - cassandra-1
     restart: always
@@ -28,7 +28,7 @@ services:
       - CASSANDRA_BROADCAST_ADDRESS=cassandra-3
       - CASSANDRA_SEEDS=cassandra-1
     ports:
-      - 7000
+      - 9242:9042
     depends_on:
       - cassandra-2
     restart: always
